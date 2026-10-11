@@ -12,12 +12,13 @@ if not my_api_key:
 client = Groq(api_key = my_api_key)
 model = "openai/gpt-oss-20b"
 role = "user"
-prompt = "I love you"
+prompt = "Suggest a good name for my food company. Name should be in one word. tell only in one word"
 
 message_system = {
     "role": "system",
-    "content": "You are my strict office colleague"
+    # "content": "You are my strict office colleague"
     # "content": "You are my loving girlfriend"
+    "content": "You are a famous brand manager who suggests a good name for food companies."
 }
 
 message={
@@ -27,7 +28,13 @@ message={
 
 messages = [message_system, message]
 
-response = client.chat.completions.create(model = model, messages = messages)
+response = client.chat.completions.create(model = model, messages = messages, temperature=2)
+# temperature = 1
+# Flavorly
+
+# temperature = 2
+# Saporio
+
 # print(response)
 # print("_____________________________________________________________________")
 
